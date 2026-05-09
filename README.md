@@ -147,31 +147,3 @@ DFS dives immediately from 0 → 1 → 3 → 7 before backtracking, showing the 
 Working through this assignment gave me a clear picture of how abstract graph theory translates into concrete Java code. The most illuminating moment was seeing how differently BFS and DFS traverse the same graph: BFS produced a clean, ordered sequence `[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]` from the small graph, while DFS gave the more irregular `[0, 1, 3, 7, 4, 9, 6, 2, 5, 8]`. Understanding *why* those sequences differ — queue vs. stack, breadth vs. depth — made the data structures click in a very practical way. The adjacency list representation also made sense immediately once I saw the O(V + E) vs. O(V²) space trade-off written out.
 
 The main challenge was implementing DFS iteratively rather than recursively. A recursive DFS is intuitive, but the iterative version requires carefully reversing the neighbor list before pushing so that the traversal order matches the expected "left-to-right" behavior. Another tricky point was that `System.nanoTime()` measurements have significant variance on the JVM due to JIT compilation and warm-up effects, so the first run of each traversal tends to be slower than subsequent ones. In a production benchmark, I would add a warm-up loop. Despite this, the results clearly show that both algorithms scale at O(V + E), and they behave consistently with theoretical expectations across all three graph sizes tested.
-
----
-
-## Repository Structure
-
-```
-assignment3-graphs/
-├── src/
-│   ├── Vertex.java
-│   ├── Edge.java
-│   ├── Graph.java
-│   ├── Experiment.java
-│   └── Main.java
-├── docs/
-│   └── screenshots/
-├── README.md
-└── .gitignore
-```
-
-## How to Run
-
-```bash
-cd src
-javac *.java
-java Main
-```
-
-Requires Java 11 or later (tested on Java 21).
