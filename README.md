@@ -99,6 +99,7 @@ The program entry point. Creates a hand-crafted small graph (10 vertices), print
 - The differences in timing are relatively small, which is consistent with both algorithms having the same asymptotic complexity on similar structures.
 - The **traversal order differs significantly**: BFS visits vertices in "waves" from the start (1, 2, 3 ... closest first), while DFS dives deep along one branch before returning, producing a less uniform order.
 
+```
 ── Analysis ──
   Size  10: DFS was faster by 6 792 ns
   Size  30: DFS was faster by 9 958 ns
